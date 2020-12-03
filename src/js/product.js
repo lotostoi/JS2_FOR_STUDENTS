@@ -1,3 +1,6 @@
+// локальная регистрация компонента 
+// подробнее об отличиях локальной и глобальной регистрации компонента
+// тут: https://ru.vuejs.org/v2/guide/components-registration.html
 const CompProduct = {
   template: `
     <div class="product-block">
