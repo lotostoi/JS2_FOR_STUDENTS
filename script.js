@@ -1,5 +1,5 @@
 // общий путь api(к данным о товарах на сервере), если вам не показывали как создать такую ссылку в репозитории напиши, я подскажу.
-const BASE_URL = 'https://raw.githubusercontent.com/lotostoi/GeekBrains-project/homework/responses/'
+const BASE_URL = 'https://raw.githubusercontent.com/lotostoi/JS2_FOR_STUDENTS/lesson3/responses/'
 
 // объект ссылок к json файлам на сервере, для работы с каталогом товаров.
 const CATALOG_URL = { goods: BASE_URL + 'catalogData.json' }
