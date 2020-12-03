@@ -1,38 +1,64 @@
 <!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Homework-1</title>
-    <link rel="stylesheet" href="./src/css/style.css" />
-  </head>
-  <body>
-    <div id="myApp">
-      <!--ref="header" позволяет дотянуться до этого компонента из родительского
-      подробнее об использовании $root $refs ref тут: https://ru.vuejs.org/v2/guide/components-edge-cases.html
-      -->
-      <comp-header ref="header"></comp-header>
+<html lang="en">
 
-      <main class="main">
-        <!-- ref="goods" позволяет дотянуться до этого компонента из родительского
-      подробнее об использовании $root $refs ref тут: https://ru.vuejs.org/v2/guide/components-edge-cases.html
-      -->
-        <comp-products ref="goods"></comp-products>
-      </main>
+<head>
+  <meta charset="UTF-8" />
+  <title>Главная страница</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://kit.fontawesome.com/61f160a9f8.js" crossorigin="anonymous"></script>
+</head>
 
-      <comp-footer></comp-footer>
+<body>
+  <header>
+    <!-- Убрал все лишнее из верстки -->
+    <div class="header container">
+      <div class="header-right">
+        <div id="cart">
+          <h3 class="header__toCatalog ">
+            Shope
+          </h3>
+          <div class="header__cart">
+            <span class="header__cart-quantity">0</span>
+            <span class="header__cart-sum">0</span>
+            <img src="img/cart.svg" class="header__cart-img" alt="cart" />
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="container catalogue">
+      <!-- место для рендеринга товров каталога -->
+    </div>
+    <div class="productsCart hiden">
+      <div class="container">
+        <h1>Cart</h1>
+        <div class="productLine">
+          <div class="productDetails">
+            <p class="productFeatures_header">Product Details</p>
+          </div>
+          <div class="unitPrice">
+            <p class="productFeatures_header">unite Price</p>
+          </div>
+          <div class="quantity">
+            <p class="productFeatures_header">quantity</p>
+          </div>
+          <div class="subtotal">
+            <p class="productFeatures_header">Subtotal</p>
+          </div>
+          <div class="action">
+            <p class="productFeatures_header">ACTION</p>
+          </div>
+        </div>
+        <div class="prodInCart">
+          <!-- место для рендеринга товров корзины -->
+        </div>
+        <div class="shoppingCart-line"></div>
+        <div class="shoppingCart__function">
+          <b>Total quantity: <span class="header__cart-quantity">0</span> </b>
+          <b>Total sum:<span class="header__cart-sum">0</span></b>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+</body>
 
-    <script src="./src/js/vue.js"></script>
-    <script src="./src/js/constants.js"></script>
-    <script src="./src/js/cart-comp.js"></script>
-    <script src="./src/js/search-comp.js"></script>
-    <script src="./src/js/header-comp.js"></script>
-    <script src="./src/js/footer-comp.js"></script>
-    <script src="./src/js/product.js"></script>
-    <script src="./src/js/products.js"></script>
-
-    <script src="./src/js/main.js"></script>
-  </body>
 </html>
-<!--  -->
