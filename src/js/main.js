@@ -1,4 +1,4 @@
-// Приложение на Vue
+// Cоздание корневого компонента
 const app = new Vue({
   el: '#myApp',
   data: {
@@ -11,7 +11,7 @@ const app = new Vue({
   },
 
   methods: {
-    // Метод делает запрос на сервер, для получения товаров
+    // Метод для работы с сервером
     getJson(url) {
       return fetch(url)
         .then((result) => result.json())
@@ -22,3 +22,6 @@ const app = new Vue({
   },
 
 })
+
+
+

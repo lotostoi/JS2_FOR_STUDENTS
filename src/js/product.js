@@ -41,13 +41,21 @@ const CompProduct = {
     return {}
   },
   props: {
+    // описываем проп в котором  будет передаваться объект товара
     item: {
       type: Object,
       required: true,
     },
   },
+  // описываем объект с компонентами которые будут вложены в данный компонент  
+  components: {
+    SearchComp,
+    CartComp,
+  },
   methods: {
     addProductCart(item) {
+      // дотягиваемся через ref и refs до метода корзины addProductCart и вызываем его
+      // подробнее об использовании $root $refs ref тут: https://ru.vuejs.org/v2/guide/components-edge-cases.html
       this.$root.$refs.header.$refs.cart.addProductCart(item)
     },
     // Метод убавляет количество товара, если количество равно 1
@@ -59,8 +67,5 @@ const CompProduct = {
     },
   },
 
-  components: {
-    SearchComp,
-    CartComp,
-  },
+ 
 }

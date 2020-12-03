@@ -1,11 +1,9 @@
-const productApi = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/';
 
 const CompProducts = {
-
   template: `<section class="product">
               <div class="container">
                 <div class="product-wrapper">
-                  <comp-product  v-for="(good, index) in filteredGoods"  :item="good" :key="good.id_product" @addtocart="$emit('addtocart',$event)"></comp-product>
+                  <comp-product  v-for="(good, index) in filteredGoods"  :item="good" :key="good.id_product"></comp-product>
                 </div>
               </div>
             </section>`,
@@ -18,23 +16,14 @@ const CompProducts = {
       filteredGoods: [],
     }
   },
+    // описываем объект с компонентами которые будут вложены в данный компонент  
   components: {
     CompProduct,
   },
-  methods: {
-    filter(value) {
-     
-       if (value !== '') {
-        let regEXP = new RegExp(value, 'ig') 
-        this.filteredGoods = this.goods.filter(g=>regEXP.test(g.product_name))
-      } else {
-        this.filteredGoods = this.goods
-      }    
-    }
-  },
-
-  mounted() {
-    this.$root.getJson(`${productApi + this.catalogs}`).then((data) => {
+  created() {
+    // в хуке created() получаем начальное значение каталога с серверного API,
+    // и сохраняем данные о товарах каталога в  this.goods и this.filteredGoods
+    this.$root.getJson(API_FOR_CATALOG.goodsFromCatalog).then((data) => {
       for (let el of data) {
         let prod = Object.assign(
           { quantity: 1, imgProduct: 'http://placehold.it/350x300' },
@@ -44,5 +33,16 @@ const CompProducts = {
       }
       this.filteredGoods = this.goods
     })
+  },
+  methods: {
+    // определяем метод для фильтрации/поиска товаров каталога по условию   
+    filter(value) {
+       if (value !== '') {
+        let regEXP = new RegExp(value, 'ig') 
+        this.filteredGoods = this.goods.filter(g=>regEXP.test(g.product_name))
+      } else {
+        this.filteredGoods = this.goods
+      }    
+    }
   },
 }

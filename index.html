@@ -8,23 +8,31 @@
   </head>
   <body>
     <div id="myApp">
-      <comp-header ref="header" ></comp-header>
+      <!--ref="header" позволяет дотянуться до этого компонента из родительского
+      подробнее об использовании $root $refs ref тут: https://ru.vuejs.org/v2/guide/components-edge-cases.html
+      -->
+      <comp-header ref="header"></comp-header>
 
       <main class="main">
-        <comp-products  ref="goods"></comp-products> 
+        <!-- ref="goods" позволяет дотянуться до этого компонента из родительского
+      подробнее об использовании $root $refs ref тут: https://ru.vuejs.org/v2/guide/components-edge-cases.html
+      -->
+        <comp-products ref="goods"></comp-products>
       </main>
 
       <comp-footer></comp-footer>
     </div>
 
     <script src="./src/js/vue.js"></script>
+    <script src="./src/js/constants.js"></script>
     <script src="./src/js/cart-comp.js"></script>
     <script src="./src/js/search-comp.js"></script>
     <script src="./src/js/header-comp.js"></script>
     <script src="./src/js/footer-comp.js"></script>
     <script src="./src/js/product.js"></script>
-    <script src="./src/js/products.js"></script> 
+    <script src="./src/js/products.js"></script>
 
     <script src="./src/js/main.js"></script>
   </body>
 </html>
+<!--  -->
