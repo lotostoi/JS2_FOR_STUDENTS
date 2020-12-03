@@ -1,4 +1,14 @@
-  
-{
-  "result": 1
-}
+[
+  {
+    "id_product": 356,
+    "product_name": "Телефон",
+    "price": 1000,
+    "quantity": 1
+  },
+  {
+    "id_product": 476,
+    "product_name": "Монитор",
+    "price": 1000,
+    "quantity": 1
+  }
+]
