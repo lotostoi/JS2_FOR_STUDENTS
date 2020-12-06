@@ -1,3 +1,4 @@
+  
 [
     {
       "id_product": 123,
@@ -32,6 +33,11 @@
     {
       "id_product": 416,
       "product_name": "Видеокарта",
+      "price": 1000
+    },
+    {
+      "id_product": 336,
+      "product_name": "Микрофон",
       "price": 1000
     }
   ]

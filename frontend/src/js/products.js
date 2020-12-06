@@ -27,14 +27,11 @@ const CompProducts = {
     // и сохраняем данные о товарах каталога в  this.goods и this.filteredGoods
     // c помощью $root дотягиваемся до метода(для работы с сервером) корневого компонента
     // подробнее об использовании $root $refs ref тут: https://ru.vuejs.org/v2/guide/components-edge-cases.html
-    this.$root
-      .getJson(API_FOR_CATALOG.goodsFromCatalog)
+  http.get(API_FOR_CATALOG.goodsFromCatalog)
       .then((data) => {
+        console.log(data);
         for (let el of data) {
-          let prod = Object.assign(
-            { quantity: 1, imgProduct: 'http://placehold.it/350x300' },
-            el
-          )
+          let prod = {...el, quantity: 1, imgProduct: 'http://placehold.it/350x300' }
           this.goods.push(prod)
         }
         this.filteredGoods = this.goods

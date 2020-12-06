@@ -42,14 +42,13 @@ const CartComp = {
     // и сохраняем данные о товарах корзины в  this.cartItems
     // c помощью $root дотягиваемся до метода(для работы с сервером) корневого компонента
     // подробнее об использовании $root $refs ref тут: https://ru.vuejs.org/v2/guide/components-edge-cases.html
-
-    this.$root
-      .getJson(API_FOR_CART.goodsFromCart)
+    http
+      .get(API_FOR_CART.goodsFromCart)
       .then((data) => {
         for (let el of data) {
           // добавляем к объекту товара корзины ссылку на изображение,
           // по хорошему данная информация также должна быть на сервере
-          let prod = { ...el, imgProduct: 'http://placehold.it/350x300' }
+          let prod = {...el, imgProduct: 'http://placehold.it/350x300'}
           this.cartItems.push(prod)
         }
       })
@@ -68,50 +67,76 @@ const CartComp = {
       // на фронтенде данный ответ анализируется,  если все ок, то состояние корзины,
       // пересчитывается и перерисовывается, если сервер не смог добавить товар в корзину,
       // то на фронтенде обычно показывается сообщение "ошибка при работе с сервером"
-      this.$root
-        .getJson(API_FOR_CART.removeFromCart)
-        .then(({ result }) => {
-          if (result === 1) {
+      /*       this.$root
+        .getJson(API_FOR_CART.addToCart, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(product),
+        })
+        .then(({result}) => { */
+
+      //  если все ок, добавляем товар в корзину на фронте
+      let findElem = this.cartItems.find((elem) => elem.id_product === product.id_product)
+      if (findElem) {
+        http
+          .put(API_FOR_CART.incToCart, {id: product.id_product})
+          .then(({result}) => {
             //  если все ок, добавляем товар в корзину на фронте
-            let findElem = this.cartItems.find(
-              (elem) => elem.id_product === product.id_product
-            )
-            if (findElem) {
+            if (+result === 1) {
               findElem.quantity++
             } else {
-              let cartGood = { ...product }
-              this.cartItems.push(cartGood)
+              // если сервер вернул некорректный ответ выбрасываем ошибку
+              throw new Error("Server's answer isn't correct...")
             }
-          } else {
-            // если сервер вернул некорректный ответ выбрасываем ошибку
-            throw new Error("Server's answer isn't correct...")
-          }
-        })
-        // если в цепочке вышеописанных промиссов произошла ошибка выводим ее в консоль.
-        .catch((e) => console.error(e))
+          })
+          .catch((e) => console.error(e))
+      } else {
+        http
+          .post(API_FOR_CART.addToCart, {product})
+          .then(({result}) => {
+            if (+result === 1) {
+              let cartGood = {...product}
+              this.cartItems.push(cartGood)
+            } else {
+              // если сервер вернул некорректный ответ выбрасываем ошибку
+              throw new Error("Server's answer isn't correct...")
+            }
+          })
+          .catch((e) => console.error(e))
+      }
     },
     // Метод удаления или уменьшения количества товара в корзине.
     removeProductCart(product) {
-      this.$root
-        .getJson(API_FOR_CART.removeFromCart)
-        .then(({ result }) => {
-          if (result === 1) {
-            let findElem = this.cartItems.find(
-              (elem) => elem.id_product === product.id_product
-            )
-            if (findElem.quantity > 1) {
+      let findElem = this.cartItems.find((elem) => elem.id_product === product.id_product)
+      if (findElem.quantity > 1) {
+        http
+          .put(API_FOR_CART.decToCart, {id: product.id_product})
+          .then(({result}) => {
+            //  если все ок, добавляем товар в корзину на фронте
+            if (+result === 1) {
               findElem.quantity--
             } else {
-              let idx = this.cartItems.findIndex(
-                (elem) => elem.id_product === product.id_product
-              )
-              this.cartItems.splice(idx, 1)
+              // если сервер вернул некорректный ответ выбрасываем ошибку
+              throw new Error("Server's answer isn't correct...")
             }
-          } else {
-            throw new Error("Server's answer isn't correct...")
-          }
-        })
-        .catch((e) => console.error(e))
+          })
+          .catch((e) => console.error(e))
+      } else {
+        http
+          .delete(API_FOR_CART.removeFromCart+`/${product.id_product}`)
+          .then(({result}) => {
+            if (+result === 1) {
+              let idx = this.cartItems.findIndex((elem) => elem.id_product === product.id_product)
+              this.cartItems.splice(idx, 1)
+            } else {
+              // если сервер вернул некорректный ответ выбрасываем ошибку
+              throw new Error("Server's answer isn't correct...")
+            }
+          })
+          .catch((e) => console.error(e))
+      }
     },
     // метод для передачи общей суммы и общего количество товаров корзины
     // в родительский компонент
@@ -139,10 +164,7 @@ const CartComp = {
     // компьютид поле  в котором рассчитываются общая суммы и общего количество товаров корзины
     total() {
       return {
-        sum: this.cartItems.reduce(
-          (val, elem) => val + elem.quantity * elem.price,
-          0
-        ),
+        sum: this.cartItems.reduce((val, elem) => val + elem.quantity * elem.price, 0),
         quantity: this.cartItems.reduce((val, elem) => val + elem.quantity, 0),
       }
     },

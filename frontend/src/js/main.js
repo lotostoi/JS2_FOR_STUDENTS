@@ -12,8 +12,8 @@ const app = new Vue({
 
   methods: {
     // Метод для работы с сервером
-    getJson(url) {
-      return fetch(url)
+    getJson(url, options) {
+      return fetch(url, options || {})
         .then((result) => result.json())
         .catch((error) => {
           console.log(error)
