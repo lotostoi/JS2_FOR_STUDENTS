@@ -6,7 +6,7 @@ const API_FOR_CART = {
   goodsFromCart: 'cart',
   addToCart: 'addToCart',
   incToCart: 'incToCart',
-  decToCart: 'incToCart',
+  decToCart: 'decToCart',
   removeFromCart:'delFromCart',
 }
 // создаем объект API каталога

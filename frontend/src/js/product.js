@@ -14,23 +14,12 @@ const CompProduct = {
             Similique, at.
           </p>
           <div class="product-block-quantity">
-            <p class="product__price">{{ item.price }}</p>
-            <div class="product-quant">
-              <button
-                @click="incQuantity(item)"
-                class="item-minus"
-              >
-              -
-              </button>
-              <span>{{ item.quantity }}</span>
-              <button @click="item.quantity++" class="item-plus">
-                +
-              </button>
-            </div>
+            <p class="product__price">{{ item.price }} руб.</p>
             <div
               @click="addProductCart(item)"
               class="product-add-basket"
             >
+              <span> Add to </span>
               <img
                 src="./src/images/shopping-basket.svg"
                 alt="В корзину"
@@ -61,14 +50,5 @@ const CompProduct = {
       // подробнее об использовании $root $refs ref тут: https://ru.vuejs.org/v2/guide/components-edge-cases.html
       this.$root.$refs.header.$refs.cart.addProductCart(item)
     },
-    // Метод убавляет количество товара, если количество равно 1
-    // то возвращает return
-    incQuantity(item) { 
-      if (item.quantity > 1) {
-        item.quantity--
-      }
-    },
   },
-
- 
 }

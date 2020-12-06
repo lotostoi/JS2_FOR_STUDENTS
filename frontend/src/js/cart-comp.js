@@ -12,13 +12,14 @@ const CartComp = {
                   <p class="basket-product-title">
                     {{ item.product_name }}
                   </p>
-                  <p class="basket-product-quantity">
-                    {{ item.quantity }}
-                  </p>
                   <p class="basket-product-price">
                     {{ item.price }}
                   </p>
-                  <button @click=" removeProductCart(item)" class="basket-delete-product">&times;</button>
+                  <button @click="removeProductCart(item)" class="basket-delete-product">-</button>
+                  <p class="basket-product-quantity">
+                    {{ item.quantity }}
+                  </p>
+                  <button @click="addProductCart(item)" class="basket-delete-product">+</button>  
                 </div>
               </div>
               <p v-if="cartItems.length == 0">Корзина пуста</p>
@@ -58,25 +59,6 @@ const CartComp = {
   methods: {
     // Метод добавляет товар в корзину
     addProductCart(product) {
-      // вызывая метод корневого компонента Vue для работы с сервером,
-      // запрашиваем у сервера разрешении на добавление товара в корзину
-      // это очень упрощенная схема, поскольку данное API "фейковое",
-      // в реальной практике, в запросе на сервер отправляется id товара
-      // сервер добавляет данный товар в таблицу корзина базы данных,
-      // и если это все прошло успешно, отправляет ответ что все ок,
-      // на фронтенде данный ответ анализируется,  если все ок, то состояние корзины,
-      // пересчитывается и перерисовывается, если сервер не смог добавить товар в корзину,
-      // то на фронтенде обычно показывается сообщение "ошибка при работе с сервером"
-      /*       this.$root
-        .getJson(API_FOR_CART.addToCart, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(product),
-        })
-        .then(({result}) => { */
-
       //  если все ок, добавляем товар в корзину на фронте
       let findElem = this.cartItems.find((elem) => elem.id_product === product.id_product)
       if (findElem) {
@@ -88,7 +70,7 @@ const CartComp = {
               findElem.quantity++
             } else {
               // если сервер вернул некорректный ответ выбрасываем ошибку
-              throw new Error("Server's answer isn't correct...")
+              throw result
             }
           })
           .catch((e) => console.error(e))
@@ -101,7 +83,7 @@ const CartComp = {
               this.cartItems.push(cartGood)
             } else {
               // если сервер вернул некорректный ответ выбрасываем ошибку
-              throw new Error("Server's answer isn't correct...")
+              throw result
             }
           })
           .catch((e) => console.error(e))
@@ -119,20 +101,20 @@ const CartComp = {
               findElem.quantity--
             } else {
               // если сервер вернул некорректный ответ выбрасываем ошибку
-              throw new Error("Server's answer isn't correct...")
+              throw result
             }
           })
           .catch((e) => console.error(e))
       } else {
         http
-          .delete(API_FOR_CART.removeFromCart+`/${product.id_product}`)
+          .delete(API_FOR_CART.removeFromCart + `/${product.id_product}`)
           .then(({result}) => {
             if (+result === 1) {
               let idx = this.cartItems.findIndex((elem) => elem.id_product === product.id_product)
               this.cartItems.splice(idx, 1)
             } else {
               // если сервер вернул некорректный ответ выбрасываем ошибку
-              throw new Error("Server's answer isn't correct...")
+              throw result
             }
           })
           .catch((e) => console.error(e))
