@@ -1,27 +1,6 @@
-// Cоздание корневого компонента
-const app = new Vue({
-  el: '#myApp',
-  data: {
-  },
+// метод получения товаров каталога с сервера
+fetch('/catalog')
+  .then((data) => data.json())
+  .then((data) => console.log(data))
 
-  components: {
-    CompHeader,
-    CompFooter,
-    CompProducts,
-  },
-
-  methods: {
-    // Метод для работы с сервером
-    getJson(url, options) {
-      return fetch(url, options || {})
-        .then((result) => result.json())
-        .catch((error) => {
-          console.log(error)
-        })
-    },
-  },
-
-})
-
-
-
+// метод получения товаров корзины с сервера
