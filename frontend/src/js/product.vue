@@ -12,7 +12,7 @@
           
           <span> Add to </span>
           
-          <img src="../assets/shopping-basket.svg" alt="В корзину" />
+          <img src="./../assets/shopping-basket.svg" alt="В корзину" />
         </div>
       </div>
     </div>

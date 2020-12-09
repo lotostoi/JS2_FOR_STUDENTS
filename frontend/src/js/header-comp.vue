@@ -20,7 +20,7 @@
 
         <div class="header-menu">
           <ul class="header-ul">
-            <li v-for="el of headerLinks" class="header-li">
+            <li v-for="el of headerLinks" class="header-li" :key ="el" >
               <a href="#" class="header__link">{{ el }}</a>
             </li>
           </ul>

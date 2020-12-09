@@ -4,7 +4,7 @@ const path = require('path')
 const HTML = require('html-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
@@ -37,28 +37,21 @@ const conf = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        options: {
-          // other options...
-          transformToRequire: {
-            img: 'src',
-          },
-        },
       },
       {
-        test: /\.(png|jpe?g|gif|svg)$/i,
-        loader: 'file-loader',
-        options: {
-          name(resourcePath, resourceQuery) {
-            // `resourcePath` - `/absolute/path/to/file.js`
-            // `resourceQuery` - `?foo=bar`
-
-            if (process.env.NODE_ENV === 'development') {
-              return '[path][name].[ext]'
-            }
-
-            return '[contenthash].[ext]'
+        test: /\.(png|gif|jpe|jpg|woff|woff2|eot|ttf|svg)(\?.*$|$)/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              limit: 100000,
+              name: '[name].[contenthash].[ext]',
+              outputPath: 'static/img',
+              esModule: false // <- here
+             // publicPath: '/',
+            },
           },
-        },
+        ],
       },
       {
         test: /\.css$/i,
@@ -93,7 +86,7 @@ const conf = {
   },
   plugins: [
     new VueLoaderPlugin(),
-    new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
+    new CleanWebpackPlugin(/* {cleanStaleWebpackAssets: false} */),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
@@ -124,6 +117,6 @@ const conf = {
 }
 
 module.exports = (env, argv) => {
-  conf.devtool = argv.mode === 'production' ? false : 'eval-cheap-module-source-map'
+ // conf.devtool = argv.mode === 'production' ? false : 'eval-cheap-module-source-map'
   return conf
 }
