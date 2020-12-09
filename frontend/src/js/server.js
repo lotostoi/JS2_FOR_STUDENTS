@@ -32,8 +32,9 @@ class Server {
   }
 }
 
-const http = new Server('/', {
+export default new Server('/', {
   headers: {
     'Content-Type': 'application/json',
   },
 })
+

@@ -1,32 +1,32 @@
-// локальная регистрация компонента корзины
-// подробнее об отличиях локальной и глобальной регистрации компонента
-// тут: https://ru.vuejs.org/v2/guide/components-registration.html
-
-const CartComp = {
-  template: `<div :class="{ headerBasketActive: showBasket }" class="header-basket">
-              <div class="header-basket-product">
-                <div v-for="item in cartItems" :key="item.id_product" class="basket-product">
-                  <div class="basket-image">
-                    <img :src="imgCartProduct" :alt="item.product_name">
-                  </div>
-                  <p class="basket-product-title">
-                    {{ item.product_name }}
-                  </p>
-                  <p class="basket-product-price">
-                    {{ item.price }}
-                  </p>
-                  <button @click="removeProductCart(item)" class="basket-delete-product">-</button>
-                  <p class="basket-product-quantity">
-                    {{ item.quantity }}
-                  </p>
-                  <button @click="addProductCart(item)" class="basket-delete-product">+</button>  
-                </div>
-              </div>
-              <p v-if="cartItems.length == 0">Корзина пуста</p>
-              <div v-else class="basket-total">Итого: {{ total.sum }}<span></span></div>
-            </div>`,
-
-  data: function () {
+<template>
+  <div :class="{ headerBasketActive: showBasket }" class="header-basket">
+    <div class="header-basket-product">
+      <div v-for="item in cartItems" :key="item.id_product" class="basket-product">
+        <div class="basket-image">
+          <img :src="imgCartProduct" :alt="item.product_name" />
+        </div>
+        <p class="basket-product-title">
+          {{ item.product_name }}
+        </p>
+        <p class="basket-product-price">
+          {{ item.price }}
+        </p>
+        <button @click="removeProductCart(item)" class="basket-delete-product">-</button>
+        <p class="basket-product-quantity">
+          {{ item.quantity }}
+        </p>
+        <button @click="addProductCart(item)" class="basket-delete-product">+</button>
+      </div>
+    </div>
+    <p v-if="cartItems.length == 0">Корзина пуста</p>
+    <div v-else class="basket-total">Итого: {{ total.sum }}<span></span></div>
+  </div>
+</template>
+<script>
+import { API_FOR_CART } from 'js/constants'
+import http from "js/server"
+export default {
+  data: function() {
     return {
       imgCartProduct: 'http://placehold.it/50x50',
       cartItems: [],
@@ -49,7 +49,7 @@ const CartComp = {
         for (let el of data) {
           // добавляем к объекту товара корзины ссылку на изображение,
           // по хорошему данная информация также должна быть на сервере
-          let prod = {...el, imgProduct: 'http://placehold.it/350x300'}
+          let prod = { ...el, imgProduct: 'http://placehold.it/350x300' }
           this.cartItems.push(prod)
         }
       })
@@ -63,8 +63,8 @@ const CartComp = {
       let findElem = this.cartItems.find((elem) => elem.id_product === product.id_product)
       if (findElem) {
         http
-          .put(API_FOR_CART.incToCart, {id: product.id_product})
-          .then(({result}) => {
+          .put(API_FOR_CART.incToCart, { id: product.id_product })
+          .then(({ result }) => {
             //  если все ок, добавляем товар в корзину на фронте
             if (+result === 1) {
               findElem.quantity++
@@ -76,10 +76,10 @@ const CartComp = {
           .catch((e) => console.error(e))
       } else {
         http
-          .post(API_FOR_CART.addToCart, {product})
-          .then(({result}) => {
+          .post(API_FOR_CART.addToCart, { product })
+          .then(({ result }) => {
             if (+result === 1) {
-              let cartGood = {...product}
+              let cartGood = { ...product }
               this.cartItems.push(cartGood)
             } else {
               // если сервер вернул некорректный ответ выбрасываем ошибку
@@ -94,8 +94,8 @@ const CartComp = {
       let findElem = this.cartItems.find((elem) => elem.id_product === product.id_product)
       if (findElem.quantity > 1) {
         http
-          .put(API_FOR_CART.decToCart, {id: product.id_product})
-          .then(({result}) => {
+          .put(API_FOR_CART.decToCart, { id: product.id_product })
+          .then(({ result }) => {
             //  если все ок, добавляем товар в корзину на фронте
             if (+result === 1) {
               findElem.quantity--
@@ -108,7 +108,7 @@ const CartComp = {
       } else {
         http
           .delete(API_FOR_CART.removeFromCart + `/${product.id_product}`)
-          .then(({result}) => {
+          .then(({ result }) => {
             if (+result === 1) {
               let idx = this.cartItems.findIndex((elem) => elem.id_product === product.id_product)
               this.cartItems.splice(idx, 1)
@@ -152,3 +152,4 @@ const CartComp = {
     },
   },
 }
+</script>

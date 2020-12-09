@@ -1,8 +1,12 @@
-// Cоздание корневого компонента
-const app = new Vue({
+import Vue from 'vue'
+import CompHeader from 'js/header-comp'
+import CompFooter from 'js/footer-comp'
+import CompProducts from 'js/products'
+import '@/css/style.css'
+
+new Vue({
   el: '#myApp',
-  data: {
-  },
+  data: {},
 
   components: {
     CompHeader,
@@ -20,8 +24,4 @@ const app = new Vue({
         })
     },
   },
-
 })
-
-
-

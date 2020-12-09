@@ -1,12 +1,8 @@
-// локальная регистрация компонента 
-// подробнее об отличиях локальной и глобальной регистрации компонента
-// тут: https://ru.vuejs.org/v2/guide/components-registration.html
-const CompHeader = {
-  template: `<header class="header">
-                <div class="container">
-                  <div class="header-wrapper">
-
-                    <!-- 
+<template>
+  <header class="header">
+    <div class="container">
+      <div class="header-wrapper">
+        <!-- 
                     Вставляем компонент корзины (описан в файле cart-comp.js)
                     prop :showBasket ="basketIsActive"  отвечает за показ и скрытие корзины
                     атрибут ref = "cart" необходим что бы иметь доступ к этому компоненту  из родительского компонента 
@@ -16,35 +12,38 @@ const CompHeader = {
                     $event это аргумент который передал компонент cart-comp при генерации события "sentresult", в данном случае
                     в аргументе находится объект с полями полной стоимости и общего количества товаров в корзине              
                     -->
-                    <cart-comp :showBasket ="basketIsActive"  ref = "cart" @sentresult="setResultCart($event)" />
+        <cart-comp :showBasket="basketIsActive" ref="cart" @sentresult="setResultCart($event)" />
 
+        <div class="header-logo">
+          <img src="http://placehold.it/50x50" alt="Логотип" />
+        </div>
 
+        <div class="header-menu">
+          <ul class="header-ul">
+            <li v-for="el of headerLinks" class="header-li">
+              <a href="#" class="header__link">{{ el }}</a>
+            </li>
+          </ul>
+        </div>
 
-                    <div class="header-logo">
-                      <img src="http://placehold.it/50x50" alt="Логотип">
-                    </div>
+        <!--  вставляем компонент поиска (описан в файле search-comp.js)-->
+        <search-comp />
 
-                    <div class="header-menu">
-                      <ul class="header-ul">
-                        <li v-for="el of headerLinks" class="header-li"><a href="#" class="header__link">{{ el }}</a></li>
-                      </ul>
-                    </div>
-
-
-                    <!--  вставляем компонент поиска (описан в файле search-comp.js)-->
-                    <search-comp/>
-
-
-                    <!-- кнопка меняет состояние basketIsActive, которое через prop showBasket ="basketIsActive",
+        <!-- кнопка меняет состояние basketIsActive, которое через prop showBasket ="basketIsActive",
                     прокидывается в компонент корзины и управляет ее отображением 
                     -->
-                    <button @click="basketIsActive = !basketIsActive" class="basket-btn">
-                      Корзина {{ resultCart ?  resultCart.allQuantity: '0'}}
-                    </button>
-                  </div>
-                </div>
-              </header>`,
-  data: function () {
+        <button @click="basketIsActive = !basketIsActive" class="basket-btn">
+          Корзина {{ resultCart ? resultCart.allQuantity : '0' }}
+        </button>
+      </div>
+    </div>
+  </header>
+</template>
+<script>
+import SearchComp from "js/search-comp"
+import CartComp from "js/cart-comp"
+export default {
+  data: function() {
     return {
       headerLinks: ['Каталог', 'Акции', 'О нас', 'Контакты'],
       basketIsActive: false,
@@ -56,7 +55,7 @@ const CompHeader = {
       resultCart: null,
     }
   },
-  // описываем объект с компонентами которые будут вложены в данный компонент  
+  // описываем объект с компонентами которые будут вложены в данный компонент
   components: {
     SearchComp,
     CartComp,
@@ -70,3 +69,4 @@ const CompHeader = {
     },
   },
 }
+</script>
