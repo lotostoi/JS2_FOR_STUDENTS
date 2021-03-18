@@ -26,113 +26,115 @@ export default {
 </script>
 
 <style lang="scss">
-&__good {
-  display: flex;
-  text-decoration: none;
-  flex-direction: column;
-  margin-bottom: 40px;
-  border: 1px solid rgba(128, 128, 128, 0);
-  transition: border-color 0.5s, box-shadow 0.5s;
-  &:hover {
-    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.16);
-    border-color: rgba(128, 128, 128, 0.329);
-  }
-  & .img {
+.goods {
+  &__good {
     display: flex;
-    position: relative;
     text-decoration: none;
-    & > img {
-      width: 261px;
-      height: 279px;
+    flex-direction: column;
+    margin-bottom: 40px;
+    border: 1px solid rgba(128, 128, 128, 0);
+    transition: border-color 0.5s, box-shadow 0.5s;
+    &:hover {
+      box-shadow: 0 5px 8px rgba(0, 0, 0, 0.16);
+      border-color: rgba(128, 128, 128, 0.329);
     }
-    & > div {
-      position: absolute;
-      background-color: rgba(128, 128, 128, 0.856);
-      width: 100%;
-      height: 100%;
+    & .img {
       display: flex;
-      opacity: 0;
-      transition: opacity 0.5s;
-      justify-content: center;
-      align-items: center;
-      & > button {
-        width: 123px;
-        height: 39px;
-        border: 1px solid #ffffff;
-
-        background-color: transparent;
+      position: relative;
+      text-decoration: none;
+      & > img {
+        width: 261px;
+        height: 279px;
+      }
+      & > div {
+        position: absolute;
+        background-color: rgba(128, 128, 128, 0.856);
+        width: 100%;
+        height: 100%;
         display: flex;
+        opacity: 0;
+        transition: opacity 0.5s;
         justify-content: center;
         align-items: center;
-        outline: none;
-        &:hover {
-          background-color: $pinc;
-        }
-        &:active {
-          background-color: $pincHover;
-        }
-        & > span {
-          margin-left: 10px;
-          color: #ffffff;
+        & > button {
+          width: 123px;
+          height: 39px;
+          border: 1px solid #ffffff;
 
-          font-size: 13px;
-          font-weight: 700;
+          background-color: transparent;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          outline: none;
+          &:hover {
+            background-color: $pinc;
+          }
+          &:active {
+            background-color: $pincHover;
+          }
+          & > span {
+            margin-left: 10px;
+            color: #ffffff;
+
+            font-size: 13px;
+            font-weight: 700;
+          }
         }
       }
+      &:hover > div {
+        opacity: 1;
+      }
     }
-    &:hover > div {
-      opacity: 1;
+    & > a {
+      text-decoration: none;
+      margin: 18px 5px;
+      display: flex;
+      color: #222222;
+
+      font-size: 14px;
+      font-weight: 400;
+      text-transform: uppercase;
+      &:hover {
+        color: $pinc;
+      }
+      &:active {
+        color: $pincActive;
+      }
+    }
+    & > span {
+      margin: 0 5px;
+      display: flex;
+      color: #222222;
+      font-size: 14px;
+      font-weight: 400;
+      text-transform: uppercase;
+      margin-bottom: 18px;
     }
   }
   & > a {
     text-decoration: none;
-    margin: 18px 5px;
+    outline: none;
+    border: none;
+    width: 212px;
+    height: 48px;
+    background-color: #f16d7f;
     display: flex;
-    color: #222222;
-
-    font-size: 14px;
-    font-weight: 400;
-    text-transform: uppercase;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.5s;
+    margin-bottom: 110px;
     &:hover {
-      color: $pinc;
+      background-color: $pincActive;
     }
-    &:active {
-      color: $pincActive;
+    & > span {
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
     }
-  }
-  & > span {
-    margin: 0 5px;
-    display: flex;
-    color: #222222;
-    font-size: 14px;
-    font-weight: 400;
-    text-transform: uppercase;
-    margin-bottom: 18px;
-  }
-}
-& > a {
-  text-decoration: none;
-  outline: none;
-  border: none;
-  width: 212px;
-  height: 48px;
-  background-color: #f16d7f;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.5s;
-  margin-bottom: 110px;
-  &:hover {
-    background-color: $pincActive;
-  }
-  & > span {
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 0.4px;
-  }
-  & > img {
-    margin-left: 9px;
+    & > img {
+      margin-left: 9px;
+    }
   }
 }
 @include mq(1100, max) {

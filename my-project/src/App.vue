@@ -32,8 +32,9 @@ export default {
   },
   computed: {
     featuredGoogs() {
-      const changedGoods = this.allGoods.filter((good) => good.rating < 90);
-      return changedGoods.splice(3, 0);
+      return this.allGoods
+        .filter((good, i) => +good.rating > 90 && i)
+        .slice(0, 3);
     },
   },
 };
