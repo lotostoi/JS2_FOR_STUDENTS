@@ -2,61 +2,7 @@
   <section class="goods">
     <h3>Fetured Items</h3>
     <p>Shop for items based on what we featured in this week</p>
-    <app-good v-for="good if $parent.">
-
-    <div class="goods__cont">
-      <div class="goods__good">
-        <div class="img">
-          <img src="@/assets/img/1.jpg" width="261" height="279" alt="good" />
-          <div class="contCart">
-            <button class="cart">
-              <img
-                src="@/assets/img/cart.png"
-                width="23"
-                height="22"
-                alt="cart"
-              />
-              <span>Add to Cart</span>
-            </button>
-          </div>
-        </div>
-        <a href="#">Mango People T-shirt</a><span>$152.00</span>
-      </div>
-      <div class="goods__good">
-        <div class="img">
-          <img src="@/assets/img/2.jpg" width="261" height="279" alt="good" />
-          <div class="contCart">
-            <button class="cart">
-              <img
-                src="@/assets/img/cart.png"
-                width="23"
-                height="22"
-                alt="cart"
-              />
-              <span>Add to Cart</span>
-            </button>
-          </div>
-        </div>
-        <a href="#">Mango People T-shirt</a><span>$252.00</span>
-      </div>
-      <div class="goods__good">
-        <div class="img">
-          <img src="@/assets/img/3.jpg" width="261" height="279" alt="good" />
-          <div class="contCart">
-            <button class="cart">
-              <img
-                src="@/assets/img/cart.png"
-                width="23"
-                height="22"
-                alt="cart"
-              />
-              <span>Add to Cart</span>
-            </button>
-          </div>
-        </div>
-        <a href="#">Mango People T-shirt</a><span>$252.00</span>
-      </div>
-    </div>
+    <app-good v-for="good in $root.featuredGoogs" :key="good.id" />
     <router-link :to="{ name: 'Home' }">
       <span>Browse All Product</span>
       <img src="@/assets/img/arrow.png" alt="arrow" />
@@ -65,11 +11,14 @@
 </template>
 
 <script>
-import AppGood from "@/components/good";
+import AppGood from "@/components/Good";
 export default {
   components: {
     AppGood,
   },
+  mounted () {
+    console.log(this.$root.featuredGoogs);
+  }
 };
 </script>
 

@@ -1,24 +1,23 @@
-  
 module.exports = {
-    lintOnSave: false,
-    css: {
-      loaderOptions: {
-        scss: {
-          additionalData: `@import "~@/assets/scss/style.scss";`,
-        },
+  lintOnSave: false,
+  css: {
+    loaderOptions: {
+      scss: {
+        additionalData: `@import "~@/assets/scss/style.scss";`,
       },
     },
-    configureWebpack: (config) => {
-      return {
-        devServer: {
-          proxy: {
-            '/api/': {
-              target: 'http://localhost:3000',
-              secure: false,
-              changeOrigin: true,
-            },
+  },
+  configureWebpack: (config) => {
+    return {
+      devServer: {
+        proxy: {
+          '/test/': {
+            target: 'http://localhost:3555',
+            secure: false,
+            changeOrigin: true,
           },
         },
-      }
-    },
-  }
+      },
+    }
+  },
+}
