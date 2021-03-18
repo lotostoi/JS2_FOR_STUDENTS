@@ -9,7 +9,7 @@ const history = require('connect-history-api-fallback')
 app.use(express.json())
 
 app.get('/test/catalog', (req, res) => {
-  fs.readFile('./db/catalog.json', 'utf-8', (err, data) => {
+  fs.readFile(__dirname + '/db/catalog.json', 'utf-8', (err, data) => {
     if (err) {
       return res.json({ error: true })
     }

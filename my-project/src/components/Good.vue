@@ -9,7 +9,7 @@
         </button>
       </div>
     </div>
-    <router-link> {{ good.title }} </router-link>
+    <router-link :to="{}"> {{ good.title }} </router-link>
     <span>$ {{ good.price }} </span>
   </div>
 </template>

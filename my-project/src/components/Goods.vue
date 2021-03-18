@@ -1,18 +1,13 @@
 <template>
   <section class="goods">
-    <h3>Fetured Items</h3>
-    <p>Shop for items based on what we featured in this week</p>
+    <h3>Catalog</h3>
     <div class="goods__cont">
       <app-good
-        v-for="good in $root.featuredGoogs"
+        v-for="good in $root.allGoods"
         :key="good.id"
         :good="good"
       />
     </div>
-    <router-link  :to="{ name: 'Catalog' }">
-      <span>Browse All Product</span>
-      <img src="@/assets/img/arrow.png" alt="arrow" />
-    </router-link>
   </section>
 </template>
 
@@ -21,9 +16,6 @@ import AppGood from "@/components/Good";
 export default {
   components: {
     AppGood,
-  },
-  mounted() {
-    console.log(this.$root.featuredGoogs);
   },
 };
 </script>

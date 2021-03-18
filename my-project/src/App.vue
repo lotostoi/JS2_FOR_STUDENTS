@@ -27,7 +27,11 @@ export default {
   },
   mounted() {
     this.httpGet("catalog").then((data) => {
-      this.allGoods = data;
+      this.allGoods = data.map((good) => {
+        good.img = require(`@/assets/img/${good.img}`);
+        return good;
+      });
+      console.log(this.allGoods);
     });
   },
   computed: {

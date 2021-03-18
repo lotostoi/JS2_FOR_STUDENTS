@@ -7,7 +7,7 @@
       </router-link>
       <nav class="header__nav">
         <router-link :to="{ name: 'Home' }">Main</router-link>
-        <router-link :to="{ name: 'Home' }">Catalog</router-link>
+        <router-link :to="{ name: 'Catalog' }">Catalog</router-link>
       </nav>
       <div class="header__search">
         <input type="text" class="fieldeSearch" placeholder="Search for item" />
