@@ -5,14 +5,40 @@
 </template>
 <script>
 import AppHeader from "@/components/header";
-import AppFooter from "@/components/footer";
+import AppFooter from "@/components/Footer";
+import AppLinks from "@/components/UsefulLinks";
 export default {
+  data() {
+    return {
+      allGoods: [],
+    };
+  },
   components: {
     AppHeader,
     AppFooter,
+    AppLinks,
+  },
+  methods: {
+    httpGet(url) {
+      return fetch(`/test/${url}`)
+        .then((data) => data.json())
+        .catch(console.log);
+    },
+  },
+  mounted() {
+    this.httpGet("catalog").then((data) => {
+      this.allGoods = data;
+    });
+  },
+  computed: {
+    featuredGoogs() {
+      const changedGoods = this.allGoods.filter((good) => good.rating < 90);
+      return changedGoods.splice(3, 0);
+    },
   },
 };
 </script>
+
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -33,5 +59,8 @@ export default {
       color: #42b983;
     }
   }
+}
+.router {
+  margin-top: 120px;
 }
 </style>

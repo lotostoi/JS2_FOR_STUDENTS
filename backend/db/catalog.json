@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "title": "good_1",
+    "img": "@/assets/img/1.jpg",
+    "price": 52,
+    "rating": 55
+  },
+  {
+    "id": 2,
+    "title": "good_2",
+    "img": "@/assets/img/2.jpg",
+    "price": 52,
+    "rating": 95
+  },
+  {
+    "id": 3,
+    "title": "good_3",
+    "img": "@/assets/img/3.jpg",
+    "price": 52,
+    "rating": 95
+  },
+  {
+    "id": 4,
+    "title": "good_4",
+    "img": "@/assets/img/4.jpg",
+    "price": 52,
+    "rating": 55
+  },
+  {
+    "id": 5,
+    "title": "good_5",
+    "img": "@/assets/img/5.jpg",
+    "price": 52,
+    "rating": 55
+  },
+  {
+    "id": 6,
+    "title": "good_6",
+    "img": "@/assets/img/6.jpg",
+    "price": 52,
+    "rating": 95
+  },
+  {
+    "id": 7,
+    "title": "good_7",
+    "img": "@/assets/img/7.jpg",
+    "price": 52,
+    "rating": 55
+  },
+  {
+    "id": 8,
+    "title": "good_8",
+    "img": "@/assets/img/8.jpg",
+    "price": 52,
+    "rating": 55
+  }
+]

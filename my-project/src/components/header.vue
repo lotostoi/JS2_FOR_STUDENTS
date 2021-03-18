@@ -1,13 +1,13 @@
 <template>
   <header class="header">
     <div class="header__cont">
-      <a class="header__logo" href="index.html">
+      <router-link class="header__logo" :to="{ name: 'Home' }">
         <img src="@/assets/img/logo.png" alt="logo" />
         <p>BRSN<span>D</span></p>
-      </a>
+      </router-link>
       <nav class="header__nav">
-        <router-link :to="{}">Main</router-link>
-        <router-link :to="{}">Catalog</router-link>
+        <router-link :to="{ name: 'Home' }">Main</router-link>
+        <router-link :to="{ name: 'Home' }">Catalog</router-link>
       </nav>
       <div class="header__search">
         <input type="text" class="fieldeSearch" placeholder="Search for item" />
@@ -32,6 +32,12 @@ export default {};
   width: 100%;
   border-bottom: 1px solid #ececec;
   box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  z-index: 500;
 
   &__cont {
     justify-content: space-between;
