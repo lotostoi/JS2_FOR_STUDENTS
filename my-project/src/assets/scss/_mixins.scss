@@ -22,3 +22,35 @@
         @content;
     }
 }
+
+// animations
+
+$time: 0.3s;
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes page-leave {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+}
+
+.page-leave {
+  animation: page-leave $time;
+}
+.page-enter {
+  animation: page-enter $time;
+}

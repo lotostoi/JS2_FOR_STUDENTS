@@ -6,8 +6,12 @@
         <p>BRSN<span>D</span></p>
       </router-link>
       <nav class="header__nav">
-        <router-link :to="{ name: 'Home' }">Main</router-link>
-        <router-link :to="{ name: 'Catalog' }">Catalog</router-link>
+        <router-link :to="{ name: 'Home' }" exact active-class="active"
+          >Main</router-link
+        >
+        <router-link :to="{ name: 'Catalog' }" exact active-class="active"
+          >Catalog</router-link
+        >
       </nav>
       <div class="header__search">
         <input type="text" class="fieldeSearch" placeholder="Search for item" />
@@ -15,9 +19,16 @@
           <i class="fa fa-search" aria-hidden="true"></i>
         </button>
       </div>
-      <div class="header__cart">
+      <router-link
+        class="header__cart"
+        :to="{ name: 'Cart' }"
+        exact
+        active-class="active"
+      >
+        <span>{{ $root.totalAmount }} pcs.</span>
         <img src="@/assets/img/cart_header.svg" alt="cart" />
-      </div>
+        <span>${{ $root.totalSumm }}</span>
+      </router-link>
     </div>
   </header>
 </template>
@@ -38,6 +49,9 @@ export default {};
   right: 0;
   background-color: white;
   z-index: 500;
+  -webkit-box-shadow: 0px 5px 5px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 5px 5px -4px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 5px 5px -4px rgba(0, 0, 0, 0.75);
 
   &__cont {
     justify-content: space-between;
@@ -88,9 +102,16 @@ export default {};
       margin: 0 10px;
       text-decoration: none;
       color: $base;
+      font-size: 1.2rem;
+      padding: 5px;
+      border-bottom: 2px solid transparent;
       &:hover {
         color: darken($pincHover, 20%);
       }
+    }
+    & > a.active {
+      color: $pinc;
+      border-color: $pinc;
     }
   }
   &__search {
@@ -141,16 +162,26 @@ export default {};
     order: 3;
     margin: 0 20px 0 20px;
     display: flex;
-    width: 40px;
     height: 38px;
     padding: 0 5px;
     border-radius: 3px;
+    align-items: center;
+    text-decoration: none;
+    color: $base;
+    border: 1px solid rgba(128, 128, 128, 0.144);
+    & > span {
+      display: flex;
+      margin-left: 5px;
+    }
     &:hover {
-      background-color: $pinc;
+      background-color: lighten($pincActive, 50%);
     }
     &:active {
       background-color: $pincActive;
     }
+  }
+  &__cart.active {
+    background-color: rgba(128, 128, 128, 0.459);
   }
 }
 

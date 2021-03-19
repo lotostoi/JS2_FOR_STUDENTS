@@ -1,24 +1,29 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '@/views/Home.vue'
-import Catalog from '@/views/Catalog'
+import HomePage from '@/views/HomePage'
+import CatalogPage from '@/views/CatalogPage'
+import CartPage from '@/views/CartPage'
 
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: HomePage,
   },
   {
-    path: '/ctalog',
+    path: '/catalog',
     name: 'Catalog',
-    component: Catalog
+    component: CatalogPage,
   },
-  
+  {
+    path: '/cart',
+    name: 'Cart',
+    component: CartPage,
+  },
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
 })
 
 export default router

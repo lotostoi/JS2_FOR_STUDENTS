@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="./fontello/fontello-73ee9836/css/fontello.css"
+    />
+    <link rel="stylesheet" href="./css/pageProdacts.css" />
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <div class="header__cont">
+          <a class="header__logo" href="index.html">
+            <img src="./img/logo.png" alt="logo" />
+            <p>BRSN<span>D</span></p>
+          </a>
+          <div class="header__search">
+            <div class="browse">
+              <span>Browse</span>
+              <div class="triangle"></div>
+            </div>
+            <input
+              type="text"
+              class="fieldeSearch"
+              placeholder="Search for item"
+            />
+            <button type="submit">
+              <i class="icon-search"></i>
+            </button>
+          </div>
+          <div class="header__cart">
+            <img src="./img/cart_header.svg" alt="cart" />
+          </div>
+          <div class="header__myAccount">
+            <span>My Account</span>
+            <div class="triangle"></div>
+          </div>
+        </div>
+      </header>
+      <nav class="nav">
+        <div class="nav__cont">
+          <span class="nav__menu">Menu</span>
+          <ul class="nav__ul">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Man</a></li>
+            <li><a href="#">Women</a></li>
+            <li><a href="#">Kids</a></li>
+            <li><a href="#">Accoseriese</a></li>
+            <li><a href="#">Featured</a></li>
+            <li><a href="#">Hot deals</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="arrivals">
+        <div class="arrivals__cont">
+          <h3>New Arrivals</h3>
+          <nav>
+            <a href="#"> Home /</a>
+            <a href="#"> Men / </a>
+            <span> New Arrivals</span>
+          </nav>
+        </div>
+      </div>
+      <div class="products">
+        <div class="products__cont">
+          <div class="products__left">
+            <p class="products__category">Category</p>
+            <div class="products__contCategory">
+              <a href="#"> Accessories</a>
+              <a href="#"> Bags</a>
+              <a href="#"> Denim</a>
+              <a href="#"> Hoodies & Sweatshirts</a>
+              <a href="#"> Jackets & Coats</a>
+              <a href="#"> Pants</a>
+              <a href="#"> Polos</a>
+              <a href="#"> Shirts</a>
+              <a href="#"> Shoes</a>
+              <a href="#"> Shorts</a>
+              <a href="#"> Sweaters & Knits</a>
+              <a href="#"> T-Shirts</a>
+              <a href="#"> Tanks</a>
+            </div>
+            <p class="products__brand">Brand</p>
+            <div class="products__contBrand">
+              <a href="#"> Nike</a>
+              <a href="#"> Rebok</a>
+              <a href="#"> Adidas</a>
+              <a href="#"> Pumma</a>
+            </div>
+            <p class="products__designer">Designer</p>
+            <div class="products__contDesigner">
+              <a href="#"> Nike</a>
+              <a href="#"> Rebok</a>
+              <a href="#"> Adidas</a>
+              <a href="#"> Pumma</a>
+            </div>
+          </div>
+          <div class="products__right">
+            <div class="products__filterTop">
+              <div>
+                <div class="products__trending">
+                  <h3>Trending now</h3>
+                  <div>
+                    <a href="#"> Bohemian </a>
+                    <a href="#" class="mark">Floral </a>
+                    <a href="#">Lace </a>
+                    <a href="#"> Floral </a>
+                    <a href="#" class="mark">Lace </a>
+                    <a href="#"> Bohemian </a>
+                  </div>
+                </div>
+                <div class="products__size">
+                  <h3>Size</h3>
+                  <div>
+                    <label>
+                      <input type="checkbox" name="xxs" />
+                      XXS
+                    </label>
+                    <label>
+                      <input type="checkbox" name="xs" />
+                      XS
+                    </label>
+                    <label>
+                      <input type="checkbox" name="s" />
+                      S
+                    </label>
+
+                    <label>
+                      <input type="checkbox" name="m" />
+                      M
+                    </label>
+                    <label>
+                      <input type="checkbox" name="l" />
+                      L
+                    </label>
+                    <label>
+                      <input type="checkbox" name="xl" />
+                      XL
+                    </label>
+                    <label>
+                      <input type="checkbox" name="xxl" />
+                      XXL
+                    </label>
+                  </div>
+                </div>
+                <div class="products__price">
+                  <h3>Price</h3>
+                  <!-- ползунок начало -->
+                  <div id="slider"></div>
+                  <div>
+                    <span id="min">$52</span>
+                    <span id="max">$400</span>
+                  </div>
+                  <!-- ползунок конец -->
+                </div>
+              </div>
+              <div class="products__contSort">
+                <div class="sortby">
+                  <span>Sort By</span>
+                  <select name="sort">
+                    <option value="1">Name</option>
+                  </select>
+                </div>
+                <div class="show">
+                  <span>show</span>
+                  <select name="show">
+                    <option value="1">01</option>
+                    <option value="2">01</option>
+                    <option value="3">01</option>
+                    <option value="4">01</option>
+                    <option value="5">01</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="products__contProdacts">
+              <section class="good">
+                <div>
+                  <img src="./img/page_products1.jpg" alt="img" />
+                  <div class="hover">
+                    <button>
+                      <img src="./img/pageProductsCart.svg" alt="img" /><span
+                        >Add to Cart</span
+                      >
+                    </button>
+                    <div>
+                      <button></button>
+                      <button></button>
+                    </div>
+                  </div>
+                </div>
+                <h4><a href="#"> Mango People T-shirt </a></h4>
+                <span>$52.00</span>
+              </section>
+              <section class="good">
+                <div>
+                  <img src="./img/page_products2.jpg" alt="img" />
+                  <div class="hover">
+                    <button>
+                      <img src="./img/pageProductsCart.svg" alt="img" /><span
+                        >Add to Cart</span
+                      >
+                    </button>
+                    <div>
+                      <button></button>
+                      <button></button>
+                    </div>
+                  </div>
+                </div>
+                <h4><a href="#"> Mango People T-shirt </a></h4>
+                <span>$52.00</span>
+              </section>
+              <section class="good">
+                <div>
+                  <img src="./img/page_products3.jpg" alt="img" />
+                  <div class="hover">
+                    <button>
+                      <img src="./img/pageProductsCart.svg" alt="img" /><span
+                        >Add to Cart</span
+                      >
+                    </button>
+                    <div>
+                      <button></button>
+                      <button></button>
+                    </div>
+                  </div>
+                </div>
+                <h4><a href="#"> Mango People T-shirt </a></h4>
+                <span>$52.00</span>
+              </section>
+              <section class="good">
+                <div>
+                  <img src="./img/page_products4.jpg" alt="img" />
+                  <div class="hover">
+                    <button>
+                      <img src="./img/pageProductsCart.svg" alt="img" /><span
+                        >Add to Cart</span
+                      >
+                    </button>
+                    <div>
+                      <button></button>
+                      <button></button>
+                    </div>
+                  </div>
+                </div>
+                <h4><a href="#"> Mango People T-shirt </a></h4>
+                <span>$52.00</span>
+              </section>
+              <section class="good">
+                <div>
+                  <img src="./img/page_products5.jpg" alt="img" />
+                  <div class="hover">
+                    <button>
+                      <img src="./img/pageProductsCart.svg" alt="img" /><span
+                        >Add to Cart</span
+                      >
+                    </button>
+                    <div>
+                      <button></button>
+                      <button></button>
+                    </div>
+                  </div>
+                </div>
+                <h4><a href="#"> Mango People T-shirt </a></h4>
+                <span>$52.00</span>
+              </section>
+              <section class="good">
+                <div>
+                  <img src="./img/page_products6.jpg" alt="img" />
+                  <div class="hover">
+                    <button>
+                      <img src="./img/pageProductsCart.svg" alt="img" /><span
+                        >Add to Cart</span
+                      >
+                    </button>
+                    <div>
+                      <button></button>
+                      <button></button>
+                    </div>
+                  </div>
+                </div>
+                <h4><a href="#"> Mango People T-shirt </a></h4>
+                <span>$52.00</span>
+              </section>
+              <section class="good">
+                <div>
+                  <img src="./img/page_products7.jpg" alt="img" />
+                  <div class="hover">
+                    <button>
+                      <img src="./img/pageProductsCart.svg" alt="img" /><span
+                        >Add to Cart</span
+                      >
+                    </button>
+                    <div>
+                      <button></button>
+                      <button></button>
+                    </div>
+                  </div>
+                </div>
+                <h4><a href="#"> Mango People T-shirt </a></h4>
+                <span>$52.00</span>
+              </section>
+              <section class="good">
+                <div>
+                  <img src="./img/page_products8.jpg" alt="img" />
+                  <div class="hover">
+                    <button>
+                      <img src="./img/pageProductsCart.svg" alt="img" /><span
+                        >Add to Cart</span
+                      >
+                    </button>
+                    <div>
+                      <button></button>
+                      <button></button>
+                    </div>
+                  </div>
+                </div>
+                <h4><a href="#"> Mango People T-shirt </a></h4>
+                <span>$52.00</span>
+              </section>
+              <section class="good">
+                <div>
+                  <img src="./img/page_products9.jpg" alt="img" />
+                  <div class="hover">
+                    <button>
+                      <img src="./img/pageProductsCart.svg" alt="img" /><span
+                        >Add to Cart</span
+                      >
+                    </button>
+                    <div>
+                      <button></button>
+                      <button></button>
+                    </div>
+                  </div>
+                </div>
+                <h4><a href="#"> Mango People T-shirt </a></h4>
+                <span>$52.00</span>
+              </section>
+            </div>
+            <div class="products__pagAndBautton">
+              <div class="pag">
+                <button class="left"><i class="icon-angle-left"></i></button>
+                <button class="numPage">1</button>
+                <button class="numPage">2</button>
+                <button class="numPage">3</button>
+                <button class="numPage">4</button>
+                <button class="numPage">5</button>
+                <button class="numPage">6</button>
+                <span>....</span>
+                <button class="numPage">20</button>
+                <button class="right"><i class="icon-angle-right"></i></button>
+              </div>
+              <button>View All</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="featureBox">
+        <div class="featureBox__cont">
+          <div>
+            <img src="./img/Forma_1.png" width="45" height="32" alt="icon" />
+            <div>
+              <h5>Free Delivery</h5>
+              <p>
+                Worldwide delivery on all. Authorit tively morph next-generation
+                innov tion with extensive models.
+              </p>
+            </div>
+          </div>
+          <div>
+            <img src="./img/Forma_2.png" width="40" height="40" alt="icon" />
+            <div>
+              <h5>Sales & discounts</h5>
+              <p>
+                Worldwide delivery on all. Authorit tively morph next-generation
+                innov tion with extensive models.
+              </p>
+            </div>
+          </div>
+          <div>
+            <img src="./img/Forma_3.png" width="47" height="35" alt="icon" />
+            <div>
+              <h5>Quality assurance</h5>
+              <p>
+                Worldwide delivery on all. Authorit tively morph next-generation
+                innov tion with extensive models.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section class="subscribe">
+        <div class="subscribe__cont">
+          <div class="left">
+            <img src="./img/photo.png" width="83" height="83" alt="photo" />
+            <div>
+              <p>
+                “Vestibulum quis porttitor dui! Quisque viverra nunc mi, a
+                pulvinar purus condimentum a. Aliquam condimentum mattis neque
+                sed pretium”
+              </p>
+              <span>Bin Burhan</span>
+              <span>Dhaka, Bd</span>
+              <div class="right">
+                <div data-id="1"></div>
+                <div data-id="2"></div>
+                <div data-id="3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="right">
+            <h5>Subscribe</h5>
+            <p>FOR OUR NEWLETTER AND PROMOTION</p>
+            <div class="email">
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Enter Your Email"
+              />
+              <button type="submit">Subscribe</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="add">
+        <div class="add__cont">
+          <div class="add__top">
+            <div class="first">
+              <a class="add__logo" href="index.html">
+                <img src="./img/logo.png" alt="logo" />
+                <p>BRSN<span>D</span></p>
+              </a>
+              <p>
+                Objectively transition extensive data rather than cross
+                functional solutions. Monotonectally syndicate multidisciplinary
+                materials before go forward benefits. Intrinsicly syndicate an
+                expanded array of processes and cross-unit partnerships.
+              </p>
+              <p>
+                Efficiently plagiarize 24/365 action items and focused
+                infomediaries. Distinctively seize superior initiatives for
+                wireless technologies. Dynamically optimize.
+              </p>
+            </div>
+            <div class="second">
+              <h4>Company</h4>
+              <a href="#"> Home </a>
+              <a href="#"> Shop </a>
+              <a href="#"> About </a>
+              <a href="#"> How It Works </a>
+              <a href="#"> Contact </a>
+            </div>
+            <div class="third">
+              <h4>INFORMATION</h4>
+              <a href="#"> Tearms & Condition </a>
+              <a href="#"> Privacy Policy </a>
+              <a href="#"> How to Buy </a>
+              <a href="#"> How to Sell </a>
+              <a href="#">Promotion</a>
+            </div>
+            <div class="fourth">
+              <h4>SHOP CATEGORY</h4>
+              <a href="#"> Men </a>
+              <a href="#"> Women </a>
+              <a href="#"> Child </a>
+              <a href="#"> Apparel </a>
+              <a href="#">Brows All</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer class="footer">
+        <div class="footer__cont">
+          <p>&copy; 2017 Brand All Rights Reserved.</p>
+          <div>
+            <a href="#"><i class="icon-facebook"></i></a>
+            <a href="#"><i class="icon-twitter"></i></a>
+            <a href="#"><i class="icon-linkedin"></i></a>
+            <a href="#"><i class="icon-pinterest"></i></a>
+            <a href="#"><i class="icon-gplus"></i></a>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <!-- скрипт для работы с ползунком, тебе нужен конертно он, ссылка на сам плагин https://refreshless.com/nouislider/   -->
+    <script src="./js/nouislider.min.js"></script>
+    <!-- это какойто мой скрипт непомню для чего он точно))  -->
+    <script src="./js/main.js"></script>
+    <!-- конфигурация скрипта ./js/nouislider.min.js для работы с этим проектом -->
+    <script>
+      const slider = document.getElementById('slider')
+      const min = document.getElementById('min')
+      const max = document.getElementById('max')
+      // просто настройка даннаго плагина в соотвествии с документацией https://refreshless.com/nouislider/
+      noUiSlider.create(slider, {
+        start: [100, 320],
+        connect: true,
+        range: {
+          'min': 52,
+          'max': 420,
+        },
+      })
+      slider.noUiSlider.on('update', function (values, handle) {
+        min.innerHTML = '$' + Math.round(values[0])
+        max.innerHTML = '$' + Math.round(values[1])
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap");
+@import "mixins";
+
+$pinc: #f16d7f;
+$pincHover: #e7bdc3;
+$pincActive: #9e2d3e;
+$base: #222222;
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.wrapper {
+    width: 100%;
+    margin: 0 auto;
+    font-family: "Lato", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: $base;
+}
+
+@import "renge";
+@import "header";
+@import "nav";
+@import "arrivals";
+@import "products";
+@import "featureBox";
+@import "subscribe";
+@import "add";
+@import "footer";

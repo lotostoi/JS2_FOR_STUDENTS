@@ -1,0 +1,104 @@
+.arrivals {
+    display: flex;
+    width: 100%;
+    background-color: #f8f3f4;
+
+    &__cont {
+        max-width: 1170px;
+        width: 100%;
+        min-height: 50px;
+        display: flex;
+        padding: 65px 15px;
+        margin: 0 auto;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        box-sizing: border-box;
+        & > h3 {
+            color: #f16d7f;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 20px;
+            text-transform: uppercase;
+        }
+        & > nav {
+            display: flex;
+            & > a {
+                text-decoration: none;
+                font-size: 14px;
+                font-weight: 700;
+                line-height: 20px;
+                text-transform: uppercase;
+                color: #636363;
+                font-weight: 300;
+                &:hover {
+                    color: $pinc;
+                }
+                &:active {
+                    color: $pincActive;
+                }
+            }
+            & > span {
+                font-size: 14px;
+                font-weight: 700;
+                line-height: 20px;
+                text-transform: uppercase;
+                display: block;
+                color: #f16d7f;
+                font-weight: 700;
+            }
+        }
+    }
+}
+
+@include mq(450, max) {
+    .arrivals {
+        &__cont {
+            max-width: 1170px;
+            width: 100%;
+            min-height: 50px;
+            display: flex;
+            padding: 25px 15px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            box-sizing: border-box;
+            & > h3 {
+                color: #f16d7f;
+                font-size: 24px;
+                font-weight: 700;
+                line-height: 20px;
+                text-transform: uppercase;
+                margin-bottom: 20px;
+            }
+            & > nav {
+                display: flex;
+                & > a {
+                    text-decoration: none;
+                    font-size: 14px;
+                    font-weight: 700;
+                    line-height: 20px;
+                    text-transform: uppercase;
+                    color: #636363;
+                    font-weight: 300;
+                    &:hover {
+                        color: $pinc;
+                    }
+                    &:active {
+                        color: $pincActive;
+                    }
+                }
+                & > span {
+                    font-size: 14px;
+                    font-weight: 700;
+                    line-height: 20px;
+                    text-transform: uppercase;
+                    display: block;
+                    color: #f16d7f;
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+}

@@ -3,7 +3,7 @@
     <div class="img">
       <img :src="good.img" width="261" height="279" alt="good" />
       <div class="contCart">
-        <button class="cart">
+        <button class="cart" @click.prevent="$root.addToCart(good)">
           <img src="@/assets/img/cart.png" width="23" height="22" alt="cart" />
           <span>Add to Cart</span>
         </button>

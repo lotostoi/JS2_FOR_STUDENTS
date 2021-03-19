@@ -1,0 +1,168 @@
+.feature {
+    display: flex;
+    width: 100%;
+    margin-bottom: 50px;
+
+    &__cont {
+        max-width: 1170px;
+        width: 100%;
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+        padding: 0 15px;
+        margin: 0 auto;
+        flex-wrap: wrap;
+        justify-content: center;
+        box-sizing: border-box;
+        & > .left {
+            display: flex;
+            width: 100%;
+            max-width: 767px;
+            height: 529px;
+            min-width: 320px;
+            background: url("./../img/Layer_38.png") no-repeat;
+            background-position: center;
+            padding: 146px 39px;
+            box-sizing: border-box;
+            flex-direction: column;
+            & > span:first-of-type {
+                color: #ffffff;
+
+                font-size: 54px;
+                font-weight: 700;
+                text-transform: uppercase;
+                & > span {
+                    color: #f16d7f;
+                    letter-spacing: 1.5px;
+                }
+            }
+            & > span:last-of-type {
+                font-size: 32px;
+                letter-spacing: 0.9px;
+                color: #ffffff;
+                text-transform: uppercase;
+            }
+        }
+        & > .right {
+            display: flex;
+            flex-direction: column;
+            width: 373px;
+            min-width: 320px;
+            height: 529px;
+            background-color: #222224;
+            justify-content: space-evenly;
+            & > div {
+                display: flex;
+                padding: 10px 36px;
+                // margin: 20px 0;
+                & > img {
+                    margin-top: 4px;
+                }
+
+                & > div {
+                    margin-left: 33px;
+                    display: flex;
+                    flex-direction: column;
+                    & > h5 {
+                        color: #fbfbfb;
+
+                        font-size: 20px;
+                        font-weight: 700;
+                        /* Text style for "Free Deliv" */
+                        letter-spacing: 0.5px;
+                        margin-bottom: 17px;
+                    }
+                    & > p {
+                        color: #fbfbfb;
+
+                        font-size: 14px;
+                        font-weight: 300;
+                        line-height: 24px;
+                        /* Text style for "W, orldwid" */
+                        letter-spacing: 0.35px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include mq(1170, max) {
+    .feature {
+        &__cont {
+            & > .left {
+                display: flex;
+                width: 100%;
+                max-width: 100%;
+                height: 529px;
+                min-width: 320px;
+                background: url("./../img/Layer_38.png") no-repeat;
+                background-position: center;
+                background-size: cover;
+                padding: 146px 39px;
+                box-sizing: border-box;
+                flex-direction: column;
+                & > span:first-of-type {
+                    color: #ffffff;
+
+                    font-size: 54px;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    & > span {
+                        color: #f16d7f;
+                        letter-spacing: 1.5px;
+                    }
+                }
+                & > span:last-of-type {
+                    font-size: 32px;
+                    letter-spacing: 0.9px;
+                    color: #ffffff;
+                    text-transform: uppercase;
+                }
+            }
+            & > .right {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                min-width: 320px;
+                height: auto;
+                align-items: center;
+                background-color: #222224;
+                justify-content: space-evenly;
+                padding: 20px 0;
+                & > div {
+                    display: flex;
+                    padding: 10px 36px;
+
+                    & > img {
+                        margin-top: 4px;
+                    }
+
+                    & > div {
+                        margin-left: 33px;
+                        display: flex;
+                        flex-direction: column;
+                        & > h5 {
+                            color: #fbfbfb;
+
+                            font-size: 20px;
+                            font-weight: 700;
+                            /* Text style for "Free Deliv" */
+                            letter-spacing: 0.5px;
+                            margin-bottom: 17px;
+                        }
+                        & > p {
+                            color: #fbfbfb;
+
+                            font-size: 14px;
+                            font-weight: 300;
+                            line-height: 24px;
+                            /* Text style for "W, orldwid" */
+                            letter-spacing: 0.35px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

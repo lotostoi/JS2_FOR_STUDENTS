@@ -1,0 +1,105 @@
+.baner {
+    display: flex;
+    width: 100%;
+    background-color: #e8e8e8;
+
+    &__cont {
+        height: 665px;
+        background: url("./../img/baner.jpg") no-repeat;
+        background-position: 60% 50%;
+       
+        max-width: 1170px;
+        width: 100%;
+        min-height: 50px;
+        display: flex;
+       
+        margin: 0 auto;
+        flex-wrap: wrap;
+        justify-content: start;
+        padding: 225px 15px;
+        box-sizing: border-box;
+        & > svg {
+            margin-top: 0px;
+        }
+    }
+
+    &__h1 {
+        margin-left: 10px;
+        display: flex;
+        flex-direction: column;
+
+        & > .top {
+            display: flex;
+            font-size: 52px;
+            font-weight: 600;
+            text-transform: uppercase;
+            line-height: 43px;
+            margin-bottom: 15px;
+        }
+        & > .bottom {
+            text-transform: uppercase;
+            display: flex;
+            font-size: 34px;
+            font-weight: 600;
+            & > span {
+                margin-left: 5px;
+                color: $pinc;
+            }
+        }
+    }
+}
+
+
+
+@include mq(500,max) {
+    .baner {
+        display: flex;
+        width: 100%;
+        background-color: #e8e8e8;
+    
+        &__cont {
+            height: 665px;
+            background: url("./../img/baner.jpg") no-repeat;
+            background-position: 59% 50%;
+           
+            max-width: 1170px;
+            width: 100%;
+            min-height: 50px;
+            display: flex;
+          
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: start;
+            padding: 225px 15px;
+            box-sizing: border-box;
+            & > svg {
+                margin-top: 0px;
+            }
+        }
+    
+        &__h1 {
+            margin-left: 10px;
+            display: flex;
+            flex-direction: column;
+    
+            & > .top {
+                display: flex;
+                font-size: 30px;
+                font-weight: 600;
+                text-transform: uppercase;
+                line-height: 43px;
+                margin-bottom: 15px;
+            }
+            & > .bottom {
+                text-transform: uppercase;
+                display: flex;
+                font-size: 17px;
+                font-weight: 600;
+                & > span {
+                    margin-left: 5px;
+                    color: $pinc;
+                }
+            }
+        }
+    }
+}
