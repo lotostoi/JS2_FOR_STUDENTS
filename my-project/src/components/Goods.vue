@@ -2,11 +2,14 @@
   <section class="goods">
     <h3>Catalog</h3>
     <div class="goods__cont">
-      <app-good
-        v-for="good in $root.allGoods"
-        :key="good.id"
-        :good="good"
-      />
+      <template v-if="$root.filtredGoods.length">
+        <app-good
+          v-for="good in $root.filtredGoods"
+          :key="good.id"
+          :good="good"
+        />
+      </template>
+      <p v-else>По вашему запросу нечего не найдено...</p>
     </div>
   </section>
 </template>

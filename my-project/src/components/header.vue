@@ -6,6 +6,7 @@
         <p>BRSN<span>D</span></p>
       </router-link>
       <nav class="header__nav">
+        <a href=""></a>
         <router-link :to="{ name: 'Home' }" exact active-class="active"
           >Main</router-link
         >
@@ -14,9 +15,9 @@
         >
       </nav>
       <div class="header__search">
-        <input type="text" class="fieldeSearch" placeholder="Search for item" />
+        <input type="text" class="fieldeSearch" placeholder="Search for item" v-model="$root.valueSearch"/>
         <button type="submit">
-          <i class="fa fa-search" aria-hidden="true"></i>
+          <i class="fa fa-search" aria-hidden="true" @click.prevent="$root.appFilter"></i>
         </button>
       </div>
       <router-link

@@ -1,14 +1,14 @@
 <template>
   <app-header />
-   <router-view v-slot="{ Component }">
-      <transition
-        enter-active-class="page-enter"
-        leave-active-class="page-leave"
-        mode="out-in"
-      >
-        <component :is="Component" />
-      </transition>
-    </router-view>
+  <router-view v-slot="{ Component }">
+    <transition
+      enter-active-class="page-enter"
+      leave-active-class="page-leave"
+      mode="out-in"
+    >
+      <component :is="Component" />
+    </transition>
+  </router-view>
   <app-footer />
 </template>
 <script>
@@ -19,7 +19,9 @@ export default {
   data() {
     return {
       allGoods: [],
+      filtredGoods: [],
       Cart: [],
+      valueSearch: "",
     };
   },
   components: {
@@ -28,6 +30,22 @@ export default {
     AppLinks,
   },
   methods: {
+    appFilter() {
+      const isFind = this.allGoods.find(({ title }) =>
+        title.toLowerCase().includes(this.valueSearch.toLowerCase())
+      );
+      this.$router.push({ name: "Catalog" });
+      if (this.valueSearch === "") {
+        this.filtredGoods = this.allGoods;
+      } else if (!isFind) {
+        this.filtredGoods = [];
+      } else {
+        this.filtredGoods = this.allGoods.filter(({ title }) =>
+          title.toLowerCase().includes(this.valueSearch.toLowerCase())
+        );
+      }
+    },
+
     http(url, method = null, body = null) {
       return fetch(`/test/${url}`, {
         method: method || "GET",
@@ -39,6 +57,7 @@ export default {
         .then((data) => data.json())
         .catch(console.log);
     },
+
     addToCart(good) {
       const goodInCart = this.Cart.find(({ id }) => +id === good.id);
       if (!goodInCart) {
@@ -61,6 +80,7 @@ export default {
           .catch(console.log);
       }
     },
+
     removeFromCart(good) {
       if (good.amount > 1) {
         this.http(`cart/dec/${good.id}`, "PUT")
@@ -74,7 +94,6 @@ export default {
         this.http(`cart/delete/${good.id}`, "DELETE")
           .then(({ result }) => {
             if (result) {
-              console.log(1);
               this.Cart = this.Cart.filter(({ id }) => +id !== +good.id);
             }
           })
@@ -82,9 +101,10 @@ export default {
       }
     },
   },
+
   mounted() {
     this.http("catalog").then((data) => {
-      this.allGoods = data.map((good) => {
+      this.allGoods = this.filtredGoods = data.map((good) => {
         good.img = require(`@/assets/img/${good.img}`);
         return good;
       });
@@ -94,6 +114,7 @@ export default {
       this.Cart = data;
     });
   },
+
   computed: {
     featuredGoogs() {
       return this.allGoods.filter((good) => +good.rating > 90).slice(0, 3);
@@ -102,10 +123,7 @@ export default {
       return this.Cart.reduce((all, good) => all + good.amount, 0);
     },
     totalSumm() {
-      return this.Cart.reduce(
-        (all, good) => all + good.price * good.amount,
-        0
-      );
+      return this.Cart.reduce((all, good) => all + good.price * good.amount, 0);
     },
   },
 };

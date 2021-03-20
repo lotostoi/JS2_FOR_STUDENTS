@@ -8,19 +8,18 @@ const history = require('connect-history-api-fallback')
 
 app.use(express.json())
 
-
-
 const linkToCart = __dirname + '/db/cart.json'
 const linkToCatalog = __dirname + '/db/catalog.json'
 
 app.get('/test/catalog', (req, res) => {
   fs.readFile(linkToCatalog, 'utf-8', (err, data) => {
     if (err) {
-      return res.json({ error: true })
+      return res.json({ result: true })
     }
     res.json(JSON.parse(data))
   })
 })
+
 app.get('/test/cart', (req, res) => {
   fs.readFile(linkToCart, 'utf-8', (err, data) => {
     if (err) {
@@ -29,6 +28,7 @@ app.get('/test/cart', (req, res) => {
     res.json(JSON.parse(data))
   })
 })
+
 app.post('/test/cart/add', (req, res) => {
   fs.readFile(linkToCart, 'utf-8', (err, data) => {
     if (err) {
@@ -44,6 +44,7 @@ app.post('/test/cart/add', (req, res) => {
     })
   })
 })
+
 app.put('/test/cart/inc/:id', (req, res) => {
   fs.readFile(linkToCart, 'utf-8', (err, data) => {
     if (err) {
@@ -77,6 +78,7 @@ app.put('/test/cart/dec/:id', (req, res) => {
     })
   })
 })
+
 app.delete('/test/cart/delete/:id', (req, res) => {
   fs.readFile(linkToCart, 'utf-8', (err, data) => {
     if (err) {
@@ -91,6 +93,9 @@ app.delete('/test/cart/delete/:id', (req, res) => {
     })
   })
 })
+
 app.use(history())
+
 app.use('/', express.static('./dist'))
+
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`))
